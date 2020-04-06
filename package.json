@@ -1,9 +1,12 @@
 {
-  "name": "browser-or-node",
+  "name": "@digitalronin/browser-or-node",
   "version": "0.0.1",
   "description": "Checks for browser or node environment",
   "main": "index.js",
-  "repository": "https://github.com/ronniechong/browser-or-node.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronniechong/browser-or-node.git"
+  },
   "author": "Ronnie Chong <ronnie@otakuness.com>",
   "license": "MIT",
   "private": false,
@@ -13,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ronniechong/browser-or-node/issues"
   },
-  "homepage": "https://github.com/ronniechong/browser-or-node"
+  "homepage": "https://github.com/ronniechong/browser-or-node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
