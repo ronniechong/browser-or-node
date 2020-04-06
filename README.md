@@ -1,6 +1,6 @@
 # browser-or-node
 ![NPM](https://img.shields.io/npm/l/@digitalronin/browser-or-node)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/ronniechong/browser-or-node)
+[![npm version](http://img.shields.io/npm/v/REPO.svg?style=flat)](https://npmjs.org/package/@digitalronin/browser-or-node "View this project on npm")
 
 Check for browser or node environment
 
