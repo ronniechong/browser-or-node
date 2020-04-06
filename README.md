@@ -1,4 +1,7 @@
 # browser-or-node
+![NPM](https://img.shields.io/npm/l/@digitalronin/browser-or-node)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/ronniechong/browser-or-node)
+
 Check for browser or node environment
 
 ## Installing
