@@ -17,7 +17,7 @@ describe('Test node environment', () => {
       expect(isNode()).toEqual(true);
     })
 
-    test('returns true if it is node', () => {
+    test('returns false if it is not node', () => {
       process = undefined;
       expect(isNode()).toEqual(false);
     })
@@ -59,7 +59,7 @@ describe('Test browser environment', () => {
   });
 
   describe('isBrowser()', () => {
-    test('returns true if it is node', () => {
+    test('returns true if it is browser', () => {
       windowSpy.mockImplementation(() => ({
         location: {
           origin: 'https://example.com'
@@ -72,14 +72,14 @@ describe('Test browser environment', () => {
       expect(isBrowser()).toEqual(true);
     })
 
-    test('returns true if it is node', () => {
+    test('returns false if it is not browser', () => {
       windowSpy.mockImplementation(() => undefined);
       selfSpy.mockImplementation(() => undefined);
       expect(isBrowser()).toEqual(false);
     })
   });
   describe('Browser getInfo()', () => {
-    test('returns node information', () => {
+    test('returns browser information', () => {
       process = {
         version: undefined,
         versions: {}
