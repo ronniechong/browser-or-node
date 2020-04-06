@@ -1,0 +1,17 @@
+{
+  "name": "browser-or-node",
+  "version": "0.0.1",
+  "description": "Checks for browser or node environment",
+  "main": "index.js",
+  "repository": "https://github.com/ronniechong/browser-or-node.git",
+  "author": "Ronnie Chong <ronnie@otakuness.com>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "browser-or-node"
+  ],
+  "bugs": {
+    "url": "https://github.com/ronniechong/browser-or-node/issues"
+  },
+  "homepage": "https://github.com/ronniechong/browser-or-node"
+}
