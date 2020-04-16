@@ -1,6 +1,6 @@
 # browser-or-node
 ![NPM](https://img.shields.io/npm/l/@digitalronin/browser-or-node)
-![npm](https://img.shields.io/npm/v/@digitalronin/browser-or-node)
+[![npm (scoped)](https://img.shields.io/npm/v/@digitalronin/browser-or-node)](https://npmjs.org/package/@digitalronin/browser-or-node "View this project on npm")
 [![Build Status](https://travis-ci.com/ronniechong/browser-or-node.svg?branch=master)](https://travis-ci.com/ronniechong/browser-or-node)
 
 Check for browser or node environment
