@@ -2,6 +2,7 @@
 
 ![NPM](https://img.shields.io/npm/l/@digitalronin/browser-or-node)
 [![npm (scoped)](https://img.shields.io/npm/v/@digitalronin/browser-or-node)](https://npmjs.org/package/@digitalronin/browser-or-node 'View this project on npm')
+![node-current](https://img.shields.io/node/v/@digitalronin/browser-or-node)
 [![Test](https://github.com/ronniechong/browser-or-node/actions/workflows/test.yml/badge.svg)](https://github.com/ronniechong/browser-or-node/actions/workflows/test.yml)
 
 A tiny, zero-dependency-at-runtime utility for detecting whether your code is running in a browser or in Node.js, and for pulling basic environment info once you know which.
