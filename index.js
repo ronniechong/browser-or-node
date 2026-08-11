@@ -22,22 +22,22 @@ function getInfo() {
         version: process.versions.node,
         platform: process.platform
       }
-    }
+    };
   } else if (isRunningBrowser) {
     return {
       type: 'browser',
       info: {
-        navigator: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
+        navigator: typeof navigator !== 'undefined' ? navigator.userAgent : undefined
       }
-    }
+    };
   }
   return {
     type: 'unknown'
-  }
+  };
 }
 
 module.exports = {
   isNode,
   isBrowser,
   getInfo
-}
+};

@@ -29,9 +29,12 @@
     "node": ">=24"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "jest": "^25.2.7"
+    "jest": "^25.2.7",
+    "prettier": "^3.9.6"
   }
 }
