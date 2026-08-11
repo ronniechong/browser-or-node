@@ -101,6 +101,48 @@ describe('Test browser environment', () => {
       expect(typeof browserInfo.info).toEqual('object');
       expect(browserInfo.info.navigator).toEqual('mock-user-agent');
     })
+
+    test('returns undefined navigator info if navigator is unavailable', () => {
+      process = {
+        version: undefined,
+        versions: {}
+      }
+      windowSpy.mockImplementation(() => ({
+        location: {
+          origin: 'https://example.com'
+        },
+        document: {}
+      }));
+      selfSpy.mockImplementation(() => ({
+        name: 'mock-self'
+      }));
+      navigatorSpy.mockImplementation(() => undefined);
+      const browserInfo = getInfo();
+      expect(browserInfo.type).toEqual('browser');
+      expect(browserInfo.info.navigator).toEqual(undefined);
+    })
+  });
+});
+
+describe('Test unknown environment', () => {
+  const origProcess = process;
+  let windowSpy;
+  beforeEach(() => {
+    windowSpy = jest.spyOn(global, 'window', 'get');
+    windowSpy.mockImplementation(() => undefined);
+  });
+
+  afterEach(() => {
+    windowSpy.mockRestore();
+    process = origProcess;
+  });
+
+  describe('getInfo()', () => {
+    test('returns unknown type if neither node nor browser is detected', () => {
+      process = undefined;
+      const info = getInfo();
+      expect(info).toEqual({ type: 'unknown' });
+    })
   });
 });
 
