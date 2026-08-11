@@ -17,6 +17,9 @@
     "url": "https://github.com/ronniechong/browser-or-node/issues"
   },
   "homepage": "https://github.com/ronniechong/browser-or-node",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "test": "jest"
   },
