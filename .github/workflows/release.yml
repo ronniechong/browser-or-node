@@ -1,11 +1,15 @@
-name: Test
+name: Release
 
 on:
-  push:
-  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,6 +17,9 @@ jobs:
         with:
           node-version: 24
           cache: yarn
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -g npm@latest
       - run: yarn install --frozen-lockfile
       - run: yarn format:check
       - run: yarn test
+      - run: npm publish --provenance

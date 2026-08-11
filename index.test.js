@@ -13,14 +13,14 @@ describe('Test node environment', () => {
           node: '13.12.0'
         },
         platform: 'mock-platform'
-      }
+      };
       expect(isNode()).toEqual(true);
-    })
+    });
 
     test('returns false if it is not node', () => {
       process = undefined;
       expect(isNode()).toEqual(false);
-    })
+    });
   });
   describe('Node getInfo()', () => {
     test('returns node information', () => {
@@ -30,13 +30,13 @@ describe('Test node environment', () => {
           node: '13.12.0'
         },
         platform: 'mock-platform'
-      }
+      };
       const nodeInfo = getInfo();
       expect(nodeInfo.type).toEqual('node');
       expect(typeof nodeInfo.info).toEqual('object');
       expect(nodeInfo.info.version).toEqual('13.12.0');
       expect(nodeInfo.info.platform).toEqual('mock-platform');
-    })
+    });
   });
 });
 
@@ -70,20 +70,20 @@ describe('Test browser environment', () => {
         name: 'mock-self'
       }));
       expect(isBrowser()).toEqual(true);
-    })
+    });
 
     test('returns false if it is not browser', () => {
       windowSpy.mockImplementation(() => undefined);
       selfSpy.mockImplementation(() => undefined);
       expect(isBrowser()).toEqual(false);
-    })
+    });
   });
   describe('Browser getInfo()', () => {
     test('returns browser information', () => {
       process = {
         version: undefined,
         versions: {}
-      }
+      };
       windowSpy.mockImplementation(() => ({
         location: {
           origin: 'https://example.com'
@@ -100,13 +100,13 @@ describe('Test browser environment', () => {
       expect(browserInfo.type).toEqual('browser');
       expect(typeof browserInfo.info).toEqual('object');
       expect(browserInfo.info.navigator).toEqual('mock-user-agent');
-    })
+    });
 
     test('returns undefined navigator info if navigator is unavailable', () => {
       process = {
         version: undefined,
         versions: {}
-      }
+      };
       windowSpy.mockImplementation(() => ({
         location: {
           origin: 'https://example.com'
@@ -120,7 +120,7 @@ describe('Test browser environment', () => {
       const browserInfo = getInfo();
       expect(browserInfo.type).toEqual('browser');
       expect(browserInfo.info.navigator).toEqual(undefined);
-    })
+    });
   });
 });
 
@@ -142,7 +142,6 @@ describe('Test unknown environment', () => {
       process = undefined;
       const info = getInfo();
       expect(info).toEqual({ type: 'unknown' });
-    })
+    });
   });
 });
-
