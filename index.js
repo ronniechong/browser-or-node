@@ -6,7 +6,7 @@ function isNode() {
 }
 
 function isBrowser() {
-  if (typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof self !== 'undefined') {
+  if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
     return true;
   }
   return false;
@@ -27,7 +27,7 @@ function getInfo() {
     return {
       type: 'browser',
       info: {
-        navigator: navigator.userAgent,
+        navigator: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
       }
     }
   }
