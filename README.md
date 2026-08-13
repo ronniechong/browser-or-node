@@ -95,6 +95,24 @@ Returns an object describing the current environment, shaped differently dependi
 
 Tests run via [Jest](https://jestjs.io/) and are checked on every push/PR by [GitHub Actions](https://github.com/ronniechong/browser-or-node/actions).
 
+## Publishing
+
+Publishing to npm is automated via [GitHub Actions](.github/workflows/release.yml) and is triggered by creating a GitHub Release — there is no manual `npm publish` step.
+
+1. Bump the `version` field in `package.json` (following [semver](https://semver.org/)) and commit the change to `master`.
+2. Create a GitHub Release with a tag matching the new version, prefixed with `v` (e.g. `v2.0.1`):
+   ```
+   > gh release create v2.0.1 --title "v2.0.1" --notes "Description of the change"
+   ```
+   This can also be done from the "Releases" page in the GitHub UI.
+3. Publishing the release triggers the `Release` workflow, which:
+   - Installs dependencies
+   - Runs `format:check` and `test`
+   - Publishes the package to the npm registry with [provenance](https://docs.npmjs.com/generating-provenance-statements) attached
+4. Once the workflow completes successfully, the new version is live on npm. Progress can be checked under the repo's [Actions tab](https://github.com/ronniechong/browser-or-node/actions).
+
+The workflow authenticates to npm using OpenID Connect (trusted publishing) — no npm token or local `npm login` is needed to release a new version.
+
 ## License
 
 MIT
