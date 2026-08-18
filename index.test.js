@@ -42,39 +42,31 @@ describe('Test node environment', () => {
 
 describe('Test browser environment', () => {
   const origProcess = process;
-  let windowSpy;
-  let selfSpy;
-  let navigatorSpy;
-  beforeEach(() => {
-    windowSpy = jest.spyOn(global, 'window', 'get');
-    selfSpy = jest.spyOn(global, 'self', 'get');
-    navigatorSpy = jest.spyOn(global, 'navigator', 'get');
-  });
 
   afterEach(() => {
-    windowSpy.mockRestore();
-    selfSpy.mockRestore();
-    navigatorSpy.mockRestore();
+    delete global.window;
+    delete global.self;
+    delete global.navigator;
     process = origProcess;
   });
 
   describe('isBrowser()', () => {
     test('returns true if it is browser', () => {
-      windowSpy.mockImplementation(() => ({
+      global.window = {
         location: {
           origin: 'https://example.com'
         },
         document: {}
-      }));
-      selfSpy.mockImplementation(() => ({
+      };
+      global.self = {
         name: 'mock-self'
-      }));
+      };
       expect(isBrowser()).toEqual(true);
     });
 
     test('returns false if it is not browser', () => {
-      windowSpy.mockImplementation(() => undefined);
-      selfSpy.mockImplementation(() => undefined);
+      global.window = undefined;
+      global.self = undefined;
       expect(isBrowser()).toEqual(false);
     });
   });
@@ -84,18 +76,18 @@ describe('Test browser environment', () => {
         version: undefined,
         versions: {}
       };
-      windowSpy.mockImplementation(() => ({
+      global.window = {
         location: {
           origin: 'https://example.com'
         },
         document: {}
-      }));
-      selfSpy.mockImplementation(() => ({
+      };
+      global.self = {
         name: 'mock-self'
-      }));
-      navigatorSpy.mockImplementation(() => ({
+      };
+      global.navigator = {
         userAgent: 'mock-user-agent'
-      }));
+      };
       const browserInfo = getInfo();
       expect(browserInfo.type).toEqual('browser');
       expect(typeof browserInfo.info).toEqual('object');
@@ -107,16 +99,16 @@ describe('Test browser environment', () => {
         version: undefined,
         versions: {}
       };
-      windowSpy.mockImplementation(() => ({
+      global.window = {
         location: {
           origin: 'https://example.com'
         },
         document: {}
-      }));
-      selfSpy.mockImplementation(() => ({
+      };
+      global.self = {
         name: 'mock-self'
-      }));
-      navigatorSpy.mockImplementation(() => undefined);
+      };
+      global.navigator = undefined;
       const browserInfo = getInfo();
       expect(browserInfo.type).toEqual('browser');
       expect(browserInfo.info.navigator).toEqual(undefined);
@@ -126,14 +118,13 @@ describe('Test browser environment', () => {
 
 describe('Test unknown environment', () => {
   const origProcess = process;
-  let windowSpy;
+
   beforeEach(() => {
-    windowSpy = jest.spyOn(global, 'window', 'get');
-    windowSpy.mockImplementation(() => undefined);
+    global.window = undefined;
   });
 
   afterEach(() => {
-    windowSpy.mockRestore();
+    delete global.window;
     process = origProcess;
   });
 
